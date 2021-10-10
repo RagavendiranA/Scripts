@@ -1,0 +1,15 @@
+$computer = "hostname"
+        Import-Module ActiveDirectory 
+        $ErrorActionPreference = 'SilentlyContinue'
+        $all_domains = @("domain", "domain")
+
+        $ad_computer = $null
+        $all_domainsText = ""
+        foreach ($domain in $all_domains) {
+            $ad_computer = Get-ADComputer $computer -Server $domain -ErrorAction $ErrorActionPreference 
+            $all_domainsText = $all_domainsText + $domain + ", "
+        }
+        $all_domainsText = $all_domainsText.Remove($all_domainsText.Length - 2)
+
+        if ($ad_computer -ne $null) { $Label2= $ad_computer.DistinguishedName } else {$Label2 = "$computer not in $all_domainsText"}
+        $Label2
