@@ -1,0 +1,4 @@
+get-acl "sharepath" | fl
+
+Example : -
+get-acl "c:\temp" | fl
